@@ -13,7 +13,7 @@ export async function editProductAction({ request, params }: ActionFunctionArgs)
 }
 
 export async function editProductLoader({ params }: LoaderFunctionArgs) {
-    console.log(params.id);
+    // console.log(params.id);
     if (params.id !== undefined) {
         const product = await getProductById(+params.id);
         if (!product) return redirect("/");

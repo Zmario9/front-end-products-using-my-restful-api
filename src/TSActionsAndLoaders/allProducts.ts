@@ -20,5 +20,5 @@ export async function productsLoader() {
 export async function productsAction({request}: ActionFunctionArgs){
   const data = Object.fromEntries(await request.formData());
   await updateProductAvailability(+data.id);
-  return console.log("Desde action de actualizar");
+  return;
 }

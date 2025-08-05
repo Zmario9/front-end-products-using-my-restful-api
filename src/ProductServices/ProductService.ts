@@ -19,8 +19,8 @@ export async function addProduct(data: ProductData) {
                 name: result.output.name,
                 price: result.output.price
             });
-            console.log(url);
-            console.log(data);
+            // console.log(url);
+            return console.log(data);
         } else {
             throw new Error("Datos no válidos");
         }
@@ -36,7 +36,7 @@ export async function getProductById(id: Product["id"]) {
         const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
         const { data } = await axios(url);
         const result = safeParse(ProductSchema, data.data);
-        console.log(result);
+        // console.log(result);
 
         if (result.success) return result.output;
         throw new Error("No se pudo obtener los datos");
@@ -61,7 +61,7 @@ export async function getProducts() {
 // PUT
 
 export async function updateProduct(data: ProductData, id: Product["id"]) {
-    console.log("Desde update service")
+    // console.log("Desde update service")
     try {
         const result = safeParse(ProductSchema, {
             id,
@@ -71,8 +71,8 @@ export async function updateProduct(data: ProductData, id: Product["id"]) {
         });
         if (result.success) {
             const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
-            console.log("CONSEGUIDO!")
-            console.log(result);
+            // console.log("CONSEGUIDO!")
+            // console.log(result);
             await axios.put(url, result.output);
         }
     } catch (e) {
@@ -96,8 +96,8 @@ export async function updateProductAvailability(id: Product["id"]){
 
 export async function deleteProduct(id: Product["id"]) {
     try {
-        console.log("DESDE DELETE SERVICE");
-        console.log(id);
+        // console.log("DESDE DELETE SERVICE");
+        // console.log(id);
         const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`;
         await axios.delete(url);
     } catch (e) {
