@@ -37,7 +37,7 @@ export default function ProductForm({
   const error = useActionData();
   const navigation = useNavigation();
 
-  const isSubmitting =  navigation.state === "submitting";
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <>
@@ -70,6 +70,8 @@ export default function ProductForm({
           <input
             id="price"
             type="number"
+            min="1"
+            step="0.01"
             className="mt-2 block w-full p-3 bg-gray-50 shadow-gray-600"
             placeholder="Precio Producto. ej. 200, 300"
             name="price"
