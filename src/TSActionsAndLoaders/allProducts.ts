@@ -6,6 +6,7 @@ export async function newProductAction({ request }: ActionFunctionArgs) {
   let error = "";
   if (Object.values(data).includes("")) error = "Todos los campos son obligatorios";
   if (Object.values(data.price).includes("e")) error = "Datos escritos no válidos.";
+  if (+data.price <= 0) error = "El monto no puede ser negativo.";
   if (error.length) return error;
 
   await addProduct(data);
